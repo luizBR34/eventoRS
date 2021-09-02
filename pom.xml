@@ -50,7 +50,9 @@
 			
 	<modules>
 		<module>boot</module>
+		<module>clients</module>
 		<module>configs</module>
+		<module>services</module>
 		<module>web</module>
 	</modules>
 	

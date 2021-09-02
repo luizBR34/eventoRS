@@ -1,6 +1,24 @@
 server:
   port: 8084
-  
+
+# Enables Eureka Registering
+#spring:
+#  application:
+#    name: eventors
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+
+#Fault Tolerance Support
+#resilience4J:
+#  retry:
+#    instances:
+#      eventlist:
+#        max-attempts: 2
+#        way-duration: 3s
+
 security:
   oauth2:
     client:
@@ -9,6 +27,4 @@ security:
     resource:
       jwt:
         key-uri: http://localhost:8081/auth/oauth/token_key
-#      tokenInfoUri: http://localhost:8081/auth/oauth/check_token
-#      user-info-uri:  http://localhost:8081/auth/userinfo     
-  
+

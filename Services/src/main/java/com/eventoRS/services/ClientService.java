@@ -21,9 +21,9 @@ public interface ClientService {
 	
 	public Role seekRoleByName(String theRoleName);
 	
-	public List<Guest> guestList(long eventCode);
+	public List<Guest> guestList(String username, long eventCode);
 	
-	public void saveGuest(long eventCode, Guest guest);
+	public void saveGuest(String username, long eventCode, Guest guest);
 	
 	public void saveEvent(Event evento);
 	

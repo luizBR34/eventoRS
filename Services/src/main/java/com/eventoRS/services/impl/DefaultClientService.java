@@ -104,11 +104,11 @@ public class DefaultClientService implements ClientService {
 	
 
 	@Override
-	public List<Guest> guestList(long eventCode) {
+	public List<Guest> guestList(String username, long eventCode) {
 
 		log.info("START - DefaultClientService:listGuests()");
 
-		ResponseEntity<List<Guest>> responseEntity = client.guestList(eventCode);
+		ResponseEntity<List<Guest>> responseEntity = client.guestList(username, eventCode);
 		List<Guest> guestList = null;
 
 		if (responseEntity.getStatusCode().equals(HttpStatus.OK)) {
@@ -123,11 +123,11 @@ public class DefaultClientService implements ClientService {
 	}
 
 	@Override
-	public void saveGuest(long eventCode, Guest guest) {
+	public void saveGuest(String username, long eventCode, Guest guest) {
 		
 		log.info("START - DefaultClientService:saveGuest()");
 		
-		ResponseEntity<Void> responseEntity = client.saveGuest(eventCode, guest);
+		ResponseEntity<Void> responseEntity = client.saveGuest(username, eventCode, guest);
 
 		if (responseEntity.getStatusCode().equals(HttpStatus.OK)) {
 			log.info("DefaultClientService:saveGuest() - The Guest was successfully saved!");

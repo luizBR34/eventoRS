@@ -35,7 +35,7 @@ public class ResourceController {
 
         if (sr.seekLastEventIndexSaved() != -1) {
             long index = sr.seekLastEventIndexSaved();
-            event.setCode(index++);
+            event.setCode(++index);
         }
 
         sr.saveEvent(event);
@@ -62,12 +62,6 @@ public class ResourceController {
     }
 
 
-/*    public List<Event> handleError(String username, Exception exception) {
-        log.info("ResourceController:handleError");
-        return Collections.emptyList();
-    }*/
-
-
 
 
     @GetMapping(value="/seekEvent/{code}", produces="application/json")
@@ -88,20 +82,23 @@ public class ResourceController {
 
     @GetMapping(value="/guestList", produces="application/json")
     @PreAuthorize("#oauth2.hasScope('read')")
-    public @ResponseBody List<Guest> guestList(@RequestParam(required = true) long eventCode) {
+    public @ResponseBody List<Guest> guestList(@RequestParam(required = true) String username,
+                                               @RequestParam(required = true) long eventCode) {
 
         log.info("ResourceController:guestList()");
-        List<Guest> listaConvidados = sr.guestList(eventCode);
+        List<Guest> listaConvidados = sr.guestList(username, eventCode);
         return listaConvidados;
     }
 
 
     @PostMapping(value="/saveGuest/", produces="application/json")
     @PreAuthorize("#oauth2.hasScope('read')")
-    public @ResponseBody void saveGuest(@RequestParam(required = true) long eventCode, @Valid Guest guest) {
+    public @ResponseBody void saveGuest(@RequestParam("username") String username,
+                                        @RequestParam(required = true) long eventCode,
+                                        @RequestBody @Valid Guest guest) {
 
         log.info("ResourceController:saveGuest()");
-        sr.saveGuest(eventCode, guest);
+        sr.saveGuest(username, eventCode, guest);
     }
 
 

@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: eventors
+  cloud:
+    vault:
+      #host: localhost
+      host: 172.21.0.1
+      port: 8200
+      scheme: http
+      # authentication: token
+      token: s.n4MOH08MyINtbbGjVsKU63Ne

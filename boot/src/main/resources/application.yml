@@ -1,5 +1,18 @@
 server:
   port: 8084
+  servlet:
+    context-path: /
+    session:
+      cookie:
+        path: /
+  ssl:
+    key-store: classpath:eventorsstore.p12
+    key-store-password: ${resourcepass}
+    key-store-type: PKCS12
+    key-alias: resourceserver
+  error:
+    whitelabel:
+      enabled: false
 
 # Enables Eureka Registering
 #spring:
@@ -20,11 +33,13 @@ server:
 #        way-duration: 3s
 
 security:
+  require-ssl: true
   oauth2:
     client:
       clientId: microclient
       clientSecret: secret
     resource:
       jwt:
-        key-uri: http://localhost:8081/auth/oauth/token_key
+        key-uri: ${EVENTOAS_HOST}/auth/oauth/token_key
+        #key-uri: https://localhost:8081/auth/oauth/token_key
 

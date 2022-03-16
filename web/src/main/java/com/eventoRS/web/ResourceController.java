@@ -54,6 +54,7 @@ public class ResourceController {
 		Event dois = new Event(2, "Cinema", "Rio de Janeiro", "16/08/2018", "18:00");
 		List<Event> eventList = Arrays.asList(um, dois);*/
 
+
         List<Event> eventList = (!username.equals("Visitor")) ?
                 sr.eventList(username) :
                 Collections.emptyList();

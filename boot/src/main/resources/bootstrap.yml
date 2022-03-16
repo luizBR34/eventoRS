@@ -3,9 +3,9 @@ spring:
     name: eventors
   cloud:
     vault:
+      host: ${VAULT_HOST}
       #host: localhost
-      host: 172.21.0.1
       port: 8200
       scheme: http
-      # authentication: token
-      token: s.n4MOH08MyINtbbGjVsKU63Ne
+      #token: s.MvyZ4i7suJRAzO3tMVCRadPC
+      token: ${VAULT_ROOT_TOKEN}
